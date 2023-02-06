@@ -1,15 +1,17 @@
 import express from 'express'
 import authRoutes from './app/auth/auth.routes.js'
 
+DeviceMotionEvent.config()
+
 const app = express()
 
 async function main() {
-	// if(process.env.NODE_ENV = 'development') app.use(morgan('dev'))
+	if(process.env.NODE_ENV = 'development') app.use(morgan('dev'))
 
 	app.use(express.json())
 	app.use('/api/auth', authRoutes)
 
-	const PORT = 5432
+	const PORT = process.env.PORT || 5432
 
 	app.listen(
 		PORT,
